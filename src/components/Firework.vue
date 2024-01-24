@@ -1,5 +1,6 @@
 <template>
     <!-- 氛围组：烟花 https://github.com/Doener48/firework -->
+
     <div class="message" v-if="showFirework"
     :style="{
         top:windowHeight - 144 +'px'
@@ -31,6 +32,10 @@
     </div>
     <canvas id="mainCanvas"></canvas>
     <canvas id="letterCanvas" style="display: none"></canvas>
+
+    <div class="filter" v-if="!clickstate" @click="clickbtn">
+        <div class="btn">许愿</div>
+    </div>
 </template>
 <script lang="ts" setup>
 import { onMounted, watch, ref, computed } from 'vue'
@@ -45,9 +50,12 @@ const newyearwordslist = fireworkWords.value
 const newyearwords = ref(newyearwordslist[getRandomInt(newyearwordslist.length)])
 const backvoice = ref(false)
 const backvoice2 = computed(() => backvoice.value)
+const clickstate = ref(false)
 
 const windowHeight = ref(window.innerHeight)
-
+const clickbtn = () => {
+    clickstate.value = true
+}
 const changebackvoice = () => {
     if (backvoice2.value) {
         backvoice.value = false
@@ -612,6 +620,32 @@ onMounted(() => {
 
 </script>
 <style scoped>
+.filter {
+    position: fixed;
+    top:0;left:0;
+    width:100%;
+    height:100%;
+    z-index: 1000;
+    background-color: rgba(0,0,0,.05);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .btn {
+        width:100px;
+        height:100px;
+        border-radius: 50%;
+        background: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+    color: #ffffff;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+}
 #mainCanvas {
     position: fixed;
     top: 0;
