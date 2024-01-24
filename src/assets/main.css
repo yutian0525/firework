@@ -117,10 +117,8 @@ body {
 }
 
 .wrapper {
-    width: 80vw;
+    width: 100vw;
     min-height: 80vh;
-    padding: 40px;
-    margin: 40px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

@@ -668,8 +668,8 @@ onMounted(() => {
         bottom: 100%;
         font-size: 12px;
         opacity: .8;
-        left:50%;
-        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
 
         .a {
             color: var(--vp-c-brand);
