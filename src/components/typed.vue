@@ -68,20 +68,20 @@
   }
   .typedText{
     color:rgb(255, 255, 255);
-    font-size: 18px;
+    font-size: 16px;
     word-wrap: break-word;
   }
   .typedText_{
     color:rgb(255, 255, 255);
-    font-size: 18px;
+    font-size: 16px;
     word-wrap: break-word;
   }
   .place{
-    width: 500px;
+    width: 40%
   }
   .magin{
-    margin-top: 7px;
-    margin-bottom: 7px;
+    margin-top: 9px;
+    margin-bottom: 9px;
   }
   @keyframes blink {
     from {
