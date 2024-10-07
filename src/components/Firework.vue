@@ -373,7 +373,8 @@ const startcanvas = () => {
     const fireworks: Firework[] = [];
 
     // if (isDark.value) {
-        bgcolor.value = { r: 22, g: 22, b: 24, a: 1 };
+    //     bgcolor.value = { r: 22, g: 22, b: 24, a: 1 };
+        bgcolor.value = { r: 100, g: 100, b: 100, a: 1 };
     // } else {
     //     bgcolor.value = { r: 246, g: 246, b: 246, a: 1 };
     // }
@@ -391,7 +392,7 @@ const startcanvas = () => {
         textCanvas.height = 150;
         // fireworks.push(new Firework("2024"));
         // if (isDark.value) {
-            bgcolor.value = { r: 22, g: 22, b: 24, a: 1 };
+            bgcolor.value = { r: 0, g: 0, b: 0, a: 1 };
             fireworks.push(new Firework())
         // } else {
         //     bgcolor.value = { r: 246, g: 246, b: 246, a: 1 };
@@ -433,7 +434,7 @@ const startcanvas = () => {
     function animate() {
         requestAnimationFrame(animate);
         ctx.rect(0, 0, canvaswidth, window.innerHeight);
-        ctx.fillStyle = `rgba(${bgcolor.value?.r},${bgcolor.value?.g},${bgcolor.value?.b},1)`;
+        ctx.fillStyle = `rgba(0,0,0,1)`;
         ctx.fill();
         if (Math.random() <= rocketSettings.spawnRate / 100) {
             soundManager.playSound('burstSmall');

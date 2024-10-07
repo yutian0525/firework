@@ -34,7 +34,7 @@ watch(
 );
 const showFirework = ref(true), //是否显示侧栏烟花特效
   fireworkTitle = ref('🧨烟花许愿🧨｜②⓪②⑤新年'), //烟花许愿标题
-  fireworkWords = ref(['恭贺新禧', '万事如意', '新年快乐', '恭喜发财', '岁岁平安', '吉祥如意', '心想事成', '万事顺遂', '一帆风顺', '二龙腾飞', '三羊开泰', '四季平安', '五福临门', '六六大顺', '七星高照', '八方来财', '九九同心', '十全十美', '荣华富贵', '金玉满堂', '龙凤呈祥', '喜气洋洋', '鸿运当头', '财源广进', '笑口常开', '幸福安康', '日进斗金', '生意兴隆', '步步高升', '年年有余', '迎春接福', '喜气盈门', '花团锦簇', '前程似锦', '福满人间', '春回大地', '辞旧迎新', '万象更新', '吉祥如意', '万事大吉', '马到成功', '功成名就', '鱼跃龙门', '一飞冲天', '瑞气盈门', '福寿康宁', '时来运转', '鸿运高照', '三阳开泰', '否极泰来', '鸿运亨通', '一帆风顺', '出入平安', '顺风顺水', '龙凤呈祥', '花好月圆', '张灯结彩', '欢天喜地', '合家欢乐', '幸福美满', '和气致祥', '招财进宝', '开门大吉', '迎春接福', '福泽满门', '花开富贵', '竹报平安', '大吉大利', '恭喜发财']) //烟花许愿关键词
+  fireworkWords = ref(['福满人间', '喜迎华诞', '国泰民安', '平安喜乐', '家国同庆', '国庆快乐']) //烟花许愿关键词
 
 const getRandomInt = (max: number) =>
   Math.floor(Math.random() * Math.floor(max))
@@ -338,9 +338,9 @@ const startcanvas = () => {
 
 
   let generalSettings = { bgAlpha: 1 }
-  let rocketSettings = { size: 3.2, spawnRate: 1.6 } //控制发射时的大小、数量
-  let explosionSettings = { size: 3.2, fadeSpeed: 1.8, applyGravity: true } //控制爆炸后的高斯模糊、大小、重力效果
-  let wordSettings = { particleSize: 1.8, fadeSpeed: 0.2 }
+  let rocketSettings = { size: 3.4, spawnRate: 1.6 } //控制发射时的大小、数量
+  let explosionSettings = { size: 3.1, fadeSpeed: 1, applyGravity: true } //控制爆炸后的高斯模糊、大小、重力效果
+  let wordSettings = { particleSize: 1.7, fadeSpeed: 0.4 }
   let canvaswidth = (window.innerWidth)
 
   const canvas: any = document.getElementById('mainCanvas')
@@ -362,7 +362,7 @@ const startcanvas = () => {
   const fireworks: Firework[] = []
 
   // if (isDark.value) {
-  bgcolor.value = { r: 22, g: 22, b: 24, a: 1 }
+  bgcolor.value = { r: 0, g: 0, b: 0, a: 1 }
   // } else {
   //     bgcolor.value = { r: 246, g: 246, b: 246, a: 1 };
   // }
@@ -380,7 +380,7 @@ const startcanvas = () => {
     textCanvas.height = 150
     // fireworks.push(new Firework("2024"));
     // if (isDark.value) {
-    bgcolor.value = { r: 22, g: 22, b: 24, a: 1 }
+    bgcolor.value = { r: 0, g: 0, b: 0, a: 1 }
     fireworks.push(new Firework())
     // } else {
     //     bgcolor.value = { r: 246, g: 246, b: 246, a: 1 };
@@ -390,8 +390,8 @@ const startcanvas = () => {
 
   function generateTextParticles(text: string, offset: Vector, color: Color) {
     textCtx.fillStyle = 'black'
-    textCtx.font = '12px Verdana'
-    textCtx.clearRect(0, 0, canvaswidth, 150)
+    textCtx.font = '17px 楷体'
+    textCtx.clearRect(0, 0, canvaswidth, 150) //150
     textCtx.fillText(text, 0, 30)
     letterImageData = textCtx.getImageData(0, 0, canvaswidth, 100)
     const letterParticles = []
@@ -407,8 +407,8 @@ const startcanvas = () => {
             wordSettings.particleSize,
             color,
             new Vector(
-              x * 3 + offset.x - text.length * 18,
-              y * 3 + offset.y - 100
+              x * 4.2 + offset.x - text.length * 32,
+              y * 4.2 + offset.y - 100
             )
           )
           ptemp.pos = new Vector(offset.x, offset.y)
@@ -427,7 +427,7 @@ const startcanvas = () => {
     if (Math.random() <= rocketSettings.spawnRate / 100) {
       soundManager.playSound('burstSmall')
       if(getRandomInt(10)>7 && showWordRef.value){
-        fireworks.push(new Firework(fireworkWords.value[getRandomInt(20)]))
+        fireworks.push(new Firework(fireworkWords.value[getRandomInt(fireworkWords.value.length)]))
       }
       else{
         fireworks.push(new Firework())
